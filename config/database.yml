@@ -15,7 +15,7 @@
 # gem 'pg'
 #
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -25,7 +25,7 @@ development:
   <<: *default
   database: practical_development
   host: 127.0.0.1
-  username: root
+  username: postgres
   password: root 
 
   # The specified database role being used to connect to postgres.
@@ -62,7 +62,7 @@ test:
   <<: *default
   database: practical_test
   host: 127.0.0.1
-  username: root
+  username: postgres
   password: root
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -87,5 +87,5 @@ test:
 production:
   <<: *default
   database: practical_production
-  username: root
+  username: postgres
   password: <%= ENV['ROOM_MANAGEMENT_DATABASE_PASSWORD'] %>

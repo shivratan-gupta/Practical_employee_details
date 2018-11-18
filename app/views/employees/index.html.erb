@@ -32,11 +32,10 @@
   </thead>
 
   <tbody>
-    <%count = 0%>
-    <% @employees.each do |employee| %>
+    <% @employees.each_with_index do |employee,index| %>
       <tr>
 
-        <td><%=count = count + 1%></td>
+        <td><%=index + 1%></td>
         <td><i class="glyphicon glyphicon glyphicon-ok"></i></td>
         <td><%=employee.user_email %></td>
         <td><%=employee.first_name %></td>
@@ -48,7 +47,7 @@
         <td><%=employee.ip_address %></td>
         <!-- <td><%#= link_to 'Edit', edit_employee_path(employee) %></td> -->
         <td><%= link_to '<i class="glyphicon glyphicon glyphicon-pencil"></i>'.html_safe, edit_employee_path(employee) %></td>
-        <td><%= link_to '<i class="glyphicon glyphicon glyphicon-trash"></i>'.html_safe, employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '<i class="glyphicon glyphicon glyphicon-trash"></i>'.html_safe, employee, method: :delete, id: employee.id, remote: true, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
