@@ -1,0 +1,136 @@
+<%= form_with(model: employee, local: true) do |form| %>
+  <% if employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+  <div class="col-sm-3">
+      <div class="field form-group">
+        <div class="control">
+          <%= form.label :role %>
+          <%= form.text_field :role, class: "input form-control text_field", placeholder: "Role" %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <div class="control">
+          <%= form.label :user_email %><span style="color :red">*</span>
+          <%= form.text_field :user_email, class: "input form-control required_field", placeholder: "User Mail" %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <div class="control">
+        <%= form.label :email_limit %><span style="color :red">*</span>
+        <%= form.select :email_limit, Employee::DROP_DOWN_OPTION,{prompt: "Select Email Limit"},{class: "input form-control required_field"} %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <div class="control">
+        <%= form.label :select_volume %>
+        <%= form.select :select_volume, Employee::DROP_DOWN_OPTION,{prompt: "Select Volume"},{class: "input form-control"} %>
+        </div>
+      </div>
+      
+  </div>
+  <div class="col-sm-3">
+      <div class="field form-group">
+        <div class="control">
+          <%= form.label :first_name %><span style="color :red">*</span>
+          <%= form.text_field :first_name, class: "input form-control text_field required_field", placeholder: "First Name" %>
+        </div>
+      </div>
+      
+      <div class="field form-group">
+        <div class="control">
+        <%= form.label :gender %>
+        <%= form.select :gender, Employee::GENDER,{prompt: "Select Gender"},{class: "input form-control"} %>
+        </div>
+      </div>
+      <div class="field form-group" style="margin-top: 55px !important;">
+        <div class="control checkbox-inline">
+        <%= form.check_box :is_multisession_allow %>
+        <%= form.label :is_multisession_allow, "Is Multisession allow" %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="control">
+        <%= form.label :select_ring_type %>
+        <%= form.select :select_ring_type, Employee::DROP_DOWN_OPTION,{prompt: "Select Ring Type"},{class: "input form-control"} %>
+        </div>
+      </div>
+
+      
+  </div>
+  <div class="col-sm-3">
+      <div class="field form-group">
+        <div class="control">
+          <%= form.label :virtual_first_name %><span style="color :red">*</span>
+          <%= form.text_field :virtual_first_name, class: "input form-control text_field required_field", placeholder: "Virtual First Name" %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <div class="control">
+        <%= form.label :chat_limit %>
+        <%= form.select :chat_limit, Employee::DROP_DOWN_OPTION,{prompt: "Select Chat Limit"},{class: "input form-control"} %>
+        </div>
+      </div>
+      
+  </div>
+</div>
+  <!-- <div class="col-sm-5"> -->
+      <div class="field form-group">
+        <div class="control">
+          <%= form.submit :submit, class: "button is-link btn btn-info submit" %>
+        </div>
+      </div>
+  <!-- </div> -->
+ 
+<% end %>
+
+<script type="text/javascript">
+  
+  $( ".text_field" ).change(function() {
+    var regex = new RegExp("^[a-zA-Z\s]+$");
+    if (!regex.test(this.value)) {
+        alert("Please enter only Alphabeticals")
+        $( "#"+this.id ).val('');
+    }
+
+  });
+
+  $( "#employee_user_email" ).change(function() {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!regex.test(this.value)) {
+        alert("Please enter Valid Mail Id")
+        $( "#"+this.id ).val('');
+    }
+
+  });
+
+
+  $('.submit').click(function(e) {
+    e.preventDefault();
+    var present = true;
+
+    $('.required_field').each(function() { //Check each input...
+      if ($(this).val() == "") { //To see if it is empty...
+        present = false;
+      }
+    });
+
+    if (present) {
+      $('form').submit();
+    }
+    else{
+      alert("Please input Required Field")
+    }
+  });
+
+</script>

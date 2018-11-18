@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practical</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <div id="wrapper" class ="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="<%= root_url %>"><i class="glyphicon glyphicon glyphicon-user"></i>&nbspEmployee Details
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parent 1</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu1">
+                        <li>
+                            <a href="<%= new_employee_url%>">&nbsp&nbsp>&nbspChild 1</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 2</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 3</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 4</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 5</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parent 1</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu2">
+                        <li>
+                            <a href="<%= new_employee_url%>">&nbsp&nbsp>&nbspChild 1</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 2</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 3</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 4</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 5</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parent 1</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu3">
+                        <li>
+                            <a href="<%= new_employee_url%>">&nbsp&nbsp>&nbspChild 1</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 2</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 3</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 4</a>
+                        </li>
+                        <li>
+                            <a href="<%= employees_url%>">&nbsp&nbsp>&nbspChild 5</a>
+                        </li>
+                    </ul>
+                </li>
+              
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+               <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
+                <%#= flash_messages %>
+
+                <%= yield %>
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+  </body>
+      <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+</html>
